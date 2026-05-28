@@ -9,8 +9,8 @@ use pyo3::prelude::*;
 mod elements;
 pub mod prelude;
 
-#[pymodule(name = "majordome_constants")]
-pub mod majordome_constants {
+#[pymodule(name = "constants")]
+pub mod constants {
     /// Mathematical constant π (pi).
     #[pymodule_export]
     pub const PI: f64 = std::f64::consts::PI;

@@ -97,7 +97,8 @@ def build_and_import(name: str) -> ModuleType:
         print(f"Error: Compiled library not found at {dll_path}")
         sys.exit(1)
 
-    pyd_path = dll_path.parent / f"{name}.pyd"
+    import_name = name.split("_")[1]
+    pyd_path = dll_path.parent / f"{import_name}.pyd"
     sys.path.insert(0, str(dll_path.parent))
 
     if not shutil.copy2(dll_path, pyd_path):
@@ -109,7 +110,7 @@ def build_and_import(name: str) -> ModuleType:
 
     #region: import
     try:
-        extension = importlib.import_module(name)
+        extension = importlib.import_module(import_name)
 
         print("=" * 70)
         print(f"    Success! Extension {name} imported successfully.")
