@@ -2,14 +2,12 @@
 name = "majordome-constants"
 version = "0.1.0"
 edition = "2024"
-
 authors = ["Walter Dal'Maz Silva <walter.dalmazsilva@gmail.com>"]
 description = "Crate providing constants to the Majordome stack."
 readme = "README.md"
 license = "MIT"
 keywords = ["database", "properties", "chemical", " thermodynamics"]
 categories = ["science"]
-
 
 [lib]
 name = "majordome_constants"

@@ -11,40 +11,52 @@ from pathlib import Path
 from subprocess import run
 from types import ModuleType
 
-
-def build_and_import(name: str) -> ModuleType:
-    """ Build and import the extension. """
-    print("=" * 70)
-
-    #region: argument parser
+def _get_arguments():
     parser = ArgumentParser("Build and import the extension.")
+
+    parser.add_argument(
+        "name",
+        type=str,
+        help="name of the extension to build."
+    )
 
     parser.add_argument(
         "--release",
         action="store_true",
         help="build the extension in release mode."
     )
+
     parser.add_argument(
         "--build",
         action=BooleanOptionalAction,
         default=True,
         help="build the extension."
     )
+
     parser.add_argument(
         "--docs",
         action=BooleanOptionalAction,
         default=True,
         help="build the extension documentation."
     )
+
     parser.add_argument(
         "--open-docs",
         action="store_true",
         help="open the extension documentation after building."
     )
-    args = parser.parse_args()
-    #endregion: argument parser
+
+    return parser.parse_args()
+
+
+def main():
+    """ Build and import the extension. """
+    print("=" * 70)
+
+    args = _get_arguments()
 
     #region: parse arguments
+    name = args.name
     should_release = args.release
     should_build = args.build
     should_docs = args.docs
@@ -128,8 +140,7 @@ def build_and_import(name: str) -> ModuleType:
     #endregion: import
 
     print("=" * 70)
-    return extension
 
 
 if __name__ == "__main__":
-    ext = build_and_import("majordome_constants")
+    main()

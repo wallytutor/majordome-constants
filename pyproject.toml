@@ -1,0 +1,22 @@
+[project]
+name = "majordome-constants"
+version = "0.1.0"
+description = "Crate providing constants to the Majordome stack."
+readme = "README.md"
+authors = [
+    { name = "Walter Dal'Maz Silva", email = "walter.dalmazsilva@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.maturin]
+module-name = "majordome_constants.constants"
+python-packages = ["majordome_constants"]
+python-source = "src"
+
+[tool.uv]
+cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.rs" }, { file = "Cargo.toml" }, { file = "Cargo.lock" }]
+
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
