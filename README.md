@@ -4,18 +4,18 @@ Crate providing constants to the Majordome stack.
 
 ## Development builds
 
-All is handled through `develop.py` script. It will build, install, and import the extension for you to inspect the contents in an interactive session. The recommended way is to run `ipython -i develop.py` to keep the interactive session alive for further testing. The most common options are listed below:
+> For quality control, the build of all Majordome components is done with `majordome-build` script, which ensures a certain workflow. Upon running `uv sync --refresh` in a fresh version of the project, *i.e.* just cloned, the build is run automatically with default `uv` workflow. This is fine because a project should always be committed with a working build. After modifying the project, the following workflow must be enforced.
 
 ```bash
-# See all available options
-ipython develop.py -- -h
+# Create the environment
+uv sync --refresh
 
-# Disable building the docs:
-ipython develop.py -- --no-docs
+# Activate (Windows)
+.venv\Scripts\activate
 
-# Open the docs after building:
-ipython develop.py -- --open-docs
+# Activate (Linux/Mac)
+source .venv/bin/activate
 
-# Build in release mode:
-ipython develop.py -- --release
+# Run the build script
+uv run majordome-build
 ```
