@@ -1,6 +1,6 @@
 # majordome-constants
 
-Crate providing constants to the Majordome stack.
+Crate providing constants for the Majordome stack.
 
 ## Development builds
 
